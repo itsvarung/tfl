@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import TrainLinesTable from "./components/table";
 import { fetchLineData } from "./helper-functions/fetchLineData";
 

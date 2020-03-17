@@ -9,7 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import LineTableRow from "./tableRow";
 
-interface Props {
+export interface Props {
   lineData: Line[];
 }
 
@@ -29,25 +29,44 @@ const TrainLinesTable: React.FC<Props> = props => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={2}></Grid>
-        <Grid item xs={8}>
-          <TableContainer>
-            <Table className={classes.table} aria-label="simple table">
+      <Grid container spacing={3} data-testid="grid-container">
+        <Grid item xs={2} data-testid="grid-item-xs-2"></Grid>
+        <Grid item xs={8} data-testid="grid-item-xs-8">
+          <TableContainer data-testid="table-container">
+            <Table
+              className={classes.table}
+              aria-label="table"
+              data-testid="table"
+            >
               {/* Table Header */}
-              <TableHead>
+              <TableHead data-testid="table-head">
                 <TableRow>
-                  <TableCell align="right">Line</TableCell>
-                  <TableCell align="right">Status</TableCell>
-                  <TableCell align="right">Status Severity</TableCell>
-                  <TableCell align="right">Status Reason</TableCell>
+                  <TableCell align="right" data-testid="table-head-line-cell">
+                    Line
+                  </TableCell>
+                  <TableCell align="right" data-testid="table-head-status-cell">
+                    Status
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    data-testid="table-head-severity-cell"
+                  >
+                    Status Severity
+                  </TableCell>
+                  <TableCell align="right" data-testid="table-head-reason-cell">
+                    Status Reason
+                  </TableCell>
                 </TableRow>
               </TableHead>
 
               {/* Table Cells */}
-              <TableBody>
+              <TableBody data-testid="table-body">
                 {props.lineData.map((line, index) => (
-                  <LineTableRow index={index} line={line} />
+                  <LineTableRow
+                    index={index}
+                    line={line}
+                    data-testid="line-row"
+                  />
                 ))}
               </TableBody>
             </Table>
