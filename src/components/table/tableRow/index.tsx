@@ -9,14 +9,18 @@ interface Props {
 const LineTableRow: React.FC<Props> = props => {
   return (
     <TableRow data-testid="line-row" key={props.index.toString()}>
-      <TableCell align="right">{props.line.name}</TableCell>
-      <TableCell align="right">
+      <TableCell align="right" data-testid="name">
+        {props.line.name}
+      </TableCell>
+      <TableCell align="right" data-testid="status-description">
         {props.line.lineStatuses[0].statusSeverityDescription}
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="right" data-testid="status-severity">
         {props.line.lineStatuses[0].statusSeverity}
       </TableCell>
-      <TableCell align="right">{props.line.lineStatuses[0].reason}</TableCell>
+      <TableCell align="right" data-testid="status-reason">
+        {props.line.lineStatuses[0].reason}
+      </TableCell>
     </TableRow>
   );
 };
