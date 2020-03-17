@@ -1,50 +1,54 @@
 import React from "react";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import LineTableRow from "./tableRow";
+import styled from "styled-components";
 
 export interface Props {
   lineData: Line[];
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1
-    },
-    table: {
-      minWidth: 650
-    }
-  })
-);
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+`;
+
+const HeaderCell = styled.th`
+  padding-right: 12%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: left;
+  color: #707070;
+  border-bottom: 2px solid #707070;
+`;
+
+const TrainLineTable = styled.table`
+  border-spacing: 0px;
+`;
 
 const TrainLinesTable: React.FC<Props> = props => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3} data-testid="grid-container">
-        <Grid item xs={2} data-testid="grid-item-xs-2"></Grid>
-        <Grid item xs={8} data-testid="grid-item-xs-8">
-          <table data-testid="table">
-            {/* Table Header */}
-            <thead data-testid="table-head">
-              <th data-testid="table-head-line-cell">Line</th>
-              <th data-testid="table-head-status-cell">Status</th>
-              <th data-testid="table-head-severity-cell">Status Severity</th>
-              <th data-testid="table-head-reason-cell">Status Reason</th>
-            </thead>
+    <Wrapper>
+      <TrainLineTable data-testid="table">
+        {/* Table Header */}
+        <thead data-testid="table-head">
+          <HeaderCell data-testid="table-head-line-cell">Line</HeaderCell>
+          <HeaderCell data-testid="table-head-status-cell">Status</HeaderCell>
+          <HeaderCell data-testid="table-head-severity-cell">
+            Status Severity
+          </HeaderCell>
+          <HeaderCell data-testid="table-head-reason-cell">
+            Status Reason
+          </HeaderCell>
+        </thead>
 
-            {/* Table Body */}
-            <tbody data-testid="table-body">
-              {props.lineData.map((line, index) => (
-                <LineTableRow index={index} line={line} />
-              ))}
-            </tbody>
-          </table>
-        </Grid>
-      </Grid>
-    </div>
+        {/* Table Body */}
+        <tbody data-testid="table-body">
+          {props.lineData.map((line, index) => (
+            <LineTableRow index={index} line={line} />
+          ))}
+        </tbody>
+      </TrainLineTable>
+    </Wrapper>
   );
 };
 

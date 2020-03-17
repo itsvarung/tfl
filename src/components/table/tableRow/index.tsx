@@ -1,25 +1,40 @@
 import React from "react";
+import styled from "styled-components";
 
 interface Props {
   index: Number;
   line: Line;
 }
+
+const Row = styled.tr`
+  font-size: 0.9em;
+  text-align: left;
+  color: #707070;
+`;
+
+const Cell = styled.td`
+  padding-right: 12%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ededed;
+`;
+
 const LineTableRow: React.FC<Props> = props => {
   return (
-    <tr data-testid="line-row" key={props.index.toString()}>
-      <td align="right" data-testid="name">
+    <Row data-testid="line-row" key={props.index.toString()}>
+      <Cell align="right" data-testid="name">
         {props.line.name}
-      </td>
-      <td align="right" data-testid="status-description">
+      </Cell>
+      <Cell align="right" data-testid="status-description">
         {props.line.lineStatuses[0].statusSeverityDescription}
-      </td>
-      <td align="right" data-testid="status-severity">
+      </Cell>
+      <Cell align="right" data-testid="status-severity">
         {props.line.lineStatuses[0].statusSeverity}
-      </td>
-      <td align="right" data-testid="status-reason">
+      </Cell>
+      <Cell align="right" data-testid="status-reason">
         {props.line.lineStatuses[0].reason}
-      </td>
-    </tr>
+      </Cell>
+    </Row>
   );
 };
 export default LineTableRow;
