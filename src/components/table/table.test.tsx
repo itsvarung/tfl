@@ -1,18 +1,9 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
-
 import { render, within } from "@testing-library/react";
 import TrainLinesTable from "./index";
 
-import Enzyme from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
-
 test("Table renders the correct number of rows if 2 rows are given", () => {
-  const { getAllByTestId, getByTestId } = render(
-    <TrainLinesTable lineData={trainLineData} />
-  );
+  const { getByTestId } = render(<TrainLinesTable lineData={trainLineData} />);
   const tableBody = getByTestId("table-body");
   const tableRows = within(tableBody).getAllByTestId("line-row");
   expect(tableRows.length).toBe(2);
@@ -21,6 +12,16 @@ test("Table renders the correct number of rows if 2 rows are given", () => {
 test("Table renders the correct number of rows if 0 rows are given", () => {
   const { queryAllByTestId } = render(<TrainLinesTable lineData={[]} />);
   expect(queryAllByTestId("line-row")).toHaveLength(0);
+});
+
+test("Table headers render correctly", () => {
+  const { getByTestId } = render(<TrainLinesTable lineData={trainLineData} />);
+  const tableHeader = getByTestId("table-head");
+  expect(within(tableHeader).getByTestId("table-head-line-cell")).toBeTruthy;
+  expect(within(tableHeader).getByTestId("table-head-status-cell")).toBeTruthy;
+  expect(within(tableHeader).getByTestId("table-head-severity-cell"))
+    .toBeTruthy;
+  expect(within(tableHeader).getByTestId("table-head-reason-cell")).toBeTruthy;
 });
 
 const trainLineData: Line[] = [

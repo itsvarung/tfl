@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 export async function fetchLineData(): Promise<Line[] | undefined> {
   try {
     const crimeDataResponse = await fetch("http://localhost:9000/");
