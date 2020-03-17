@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TrainLinesTable from "./components/table";
 import { fetchLineData } from "./services/fetchLineData";
 
 const App = () => {
-  const [lineData, setLineData] = useState<Line[]>([]);
+  const [lineData, setLineData] = React.useState<Line[]>([]);
 
-  useEffect(() => {
-    getLineData();
+  React.useEffect(() => {
+    updateLineData();
   }, [lineData]);
 
-  async function getLineData() {
+  async function updateLineData() {
     try {
       const lineData = await fetchLineData();
       if (lineData !== undefined) {
