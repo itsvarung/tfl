@@ -1,6 +1,6 @@
 import React from "react";
 import TrainLinesTable from "./components/table";
-import { fetchLineData } from "./services/fetchLineData";
+import { fetchLineData } from "./services/fetch-line-data/fetchLineData";
 
 const App = () => {
   const [lineData, setLineData] = React.useState<Line[]>([]);

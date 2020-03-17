@@ -62,11 +62,7 @@ const TrainLinesTable: React.FC<Props> = props => {
               {/* Table Cells */}
               <TableBody data-testid="table-body">
                 {props.lineData.map((line, index) => (
-                  <LineTableRow
-                    index={index}
-                    line={line}
-                    data-testid="line-row"
-                  />
+                  <LineTableRow index={index} line={line} />
                 ))}
               </TableBody>
             </Table>

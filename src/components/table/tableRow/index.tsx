@@ -8,7 +8,7 @@ interface Props {
 }
 const LineTableRow: React.FC<Props> = props => {
   return (
-    <TableRow key={props.index.toString()}>
+    <TableRow data-testid="line-row" key={props.index.toString()}>
       <TableCell align="right">{props.line.name}</TableCell>
       <TableCell align="right">
         {props.line.lineStatuses[0].statusSeverityDescription}
