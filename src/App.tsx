@@ -1,49 +1,33 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import TrainLinesTable from "./components/table";
 import { fetchLineData } from "./services/fetchLineData";
 
-type trainLines = {
-  lines: Line[];
-};
+const App = () => {
+  const [lineData, setLineData] = useState<Line[]>([]);
 
-export class App extends Component<{}, trainLines> {
-  constructor(props: trainLines) {
-    super(props);
-    this.state = {
-      lines: []
-    };
-  }
+  useEffect(() => {
+    getLineData();
+  }, [lineData]);
 
-  async setLineData() {
+  async function getLineData() {
     try {
       const lineData = await fetchLineData();
       if (lineData !== undefined) {
-        this.setState({
-          lines: lineData
-        });
+        setLineData(lineData);
       } else {
-        this.setState({
-          lines: []
-        });
+        setLineData([]);
       }
     } catch (e) {
       console.error(e);
     }
   }
 
-  async componentDidMount() {
-    this.setLineData();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <TrainLinesTable lineData={this.state.lines} />
-      </div>
-    );
-  }
-}
-
+  return (
+    <div className="App">
+      <TrainLinesTable lineData={lineData} />
+    </div>
+  );
+};
 export default App;
 
 interface Line {
