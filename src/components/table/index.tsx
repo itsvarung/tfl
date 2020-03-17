@@ -1,6 +1,6 @@
 import React from "react";
 import LineTableRow from "./tableRow";
-import { Table, Wrapper, HeaderData } from "../../styling/TableStyles";
+import { Table, Container, HeaderData } from "../../styling/TableStyles";
 
 export interface Props {
   lineData: Line[];
@@ -8,7 +8,7 @@ export interface Props {
 
 const TrainLinesTable: React.FC<Props> = props => {
   return (
-    <Wrapper>
+    <Container>
       <Table data-testid="table">
         {/* Table Header */}
         <thead data-testid="table-head">
@@ -29,7 +29,7 @@ const TrainLinesTable: React.FC<Props> = props => {
           ))}
         </tbody>
       </Table>
-    </Wrapper>
+    </Container>
   );
 };
 
