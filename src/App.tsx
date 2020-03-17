@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TrainLinesTable from "./components/table";
-import { fetchLineData } from "./helper-functions/fetchLineData";
+import { fetchLineData } from "./services/fetchLineData";
 
 type trainLines = {
   lines: Line[];
