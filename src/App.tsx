@@ -6,8 +6,8 @@ type trainLines = {
   lines: Line[];
 };
 
-export class App extends Component<any, trainLines> {
-  constructor(props: any) {
+export class App extends Component<{}, trainLines> {
+  constructor(props: trainLines) {
     super(props);
     this.state = {
       lines: []

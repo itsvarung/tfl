@@ -5,9 +5,7 @@ export async function fetchLineData(): Promise<Line[] | undefined> {
     if (!crimeDataResponse.ok) {
       throw new Error("There was no data returned by the API");
     } else {
-      console.info(crimeDataResponse);
       const crimeData: Line[] = await crimeDataResponse.json();
-
       return crimeData;
     }
   } catch (e) {
