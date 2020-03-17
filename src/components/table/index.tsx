@@ -1,44 +1,25 @@
 import React from "react";
 import LineTableRow from "./tableRow";
-import styled from "styled-components";
+import { Table, Wrapper, HeaderData } from "../../styling/TableStyles";
 
 export interface Props {
   lineData: Line[];
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-flow: column;
-`;
-
-const HeaderCell = styled.th`
-  padding-right: 12%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  text-align: left;
-  color: #707070;
-  border-bottom: 2px solid #707070;
-`;
-
-const TrainLineTable = styled.table`
-  border-spacing: 0px;
-`;
-
 const TrainLinesTable: React.FC<Props> = props => {
   return (
     <Wrapper>
-      <TrainLineTable data-testid="table">
+      <Table data-testid="table">
         {/* Table Header */}
         <thead data-testid="table-head">
-          <HeaderCell data-testid="table-head-line-cell">Line</HeaderCell>
-          <HeaderCell data-testid="table-head-status-cell">Status</HeaderCell>
-          <HeaderCell data-testid="table-head-severity-cell">
+          <HeaderData data-testid="table-head-line-cell">Line</HeaderData>
+          <HeaderData data-testid="table-head-status-cell">Status</HeaderData>
+          <HeaderData data-testid="table-head-severity-cell">
             Status Severity
-          </HeaderCell>
-          <HeaderCell data-testid="table-head-reason-cell">
+          </HeaderData>
+          <HeaderData data-testid="table-head-reason-cell">
             Status Reason
-          </HeaderCell>
+          </HeaderData>
         </thead>
 
         {/* Table Body */}
@@ -47,7 +28,7 @@ const TrainLinesTable: React.FC<Props> = props => {
             <LineTableRow index={index} line={line} />
           ))}
         </tbody>
-      </TrainLineTable>
+      </Table>
     </Wrapper>
   );
 };

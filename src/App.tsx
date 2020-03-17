@@ -1,5 +1,5 @@
 import React from "react";
-import TrainLinesTable from "./components/table";
+import Table from "./components/table";
 import { fetchLineData } from "./services/fetch-line-data/fetchLineData";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <TrainLinesTable lineData={lineData} />
+      <Table lineData={lineData} />
     </div>
   );
 };
