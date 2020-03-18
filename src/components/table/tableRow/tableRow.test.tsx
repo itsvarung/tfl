@@ -1,6 +1,7 @@
 import React from "react";
 import { render, within } from "@testing-library/react";
 import Row from "./index";
+import { Line } from "../../../models/line";
 
 test("Row renders correctly", () => {
   const { getByTestId } = render(<Row index={0} line={trainLineData} />);
@@ -54,55 +55,3 @@ const trainLineData: Line = {
       "Tfl.Api.Presentation.Entities.Crowding, Tfl.Api.Presentation.Entities"
   }
 };
-
-interface Line {
-  $type: String;
-  id: String;
-  name: String;
-  modeName: String;
-  disruptions: String[];
-  created: String;
-  modified: String;
-  lineStatuses: LineStatus[];
-  routeSections: String[];
-  serviceTypes: ServiceType[];
-  crowding: Crowding;
-}
-
-interface LineStatus {
-  $type: String;
-  id: number;
-  statusSeverity: number;
-  statusSeverityDescription: String;
-  reason: String;
-  created: String;
-  validityPeriods: ValidityPeriod[];
-  disruption: Disruption;
-}
-
-interface Disruption {
-  $type: String;
-  category: String;
-  categoryDescription: String;
-  description: String;
-  affectedRoutes: String[];
-  affectedStops: String[];
-  closureText: String;
-}
-
-interface ValidityPeriod {
-  $type: String;
-  fromDate: String;
-  toDate: String;
-  isNow: Boolean;
-}
-
-interface ServiceType {
-  $type: String;
-  name: String;
-  uri: String;
-}
-
-interface Crowding {
-  $type: String;
-}

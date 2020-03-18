@@ -1,13 +1,15 @@
 import React from "react";
 import Table from "./components/table";
 import { fetchLineData } from "./services/fetch-line-data/fetchLineData";
+import { Line } from "./models/line";
+import { Wrapper } from "./styling/TableStyles";
 
 const App = () => {
   const [lineData, setLineData] = React.useState<Line[]>([]);
 
   React.useEffect(() => {
     updateLineData();
-  }, [lineData]);
+  }, []);
 
   async function updateLineData() {
     try {
@@ -23,61 +25,9 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <Wrapper>
       <Table lineData={lineData} />
-    </div>
+    </Wrapper>
   );
 };
 export default App;
-
-interface Line {
-  $type: String;
-  id: String;
-  name: String;
-  modeName: String;
-  disruptions: String[];
-  created: String;
-  modified: String;
-  lineStatuses: LineStatus[];
-  routeSections: String[];
-  serviceTypes: ServiceType[];
-  crowding: Crowding;
-}
-
-interface LineStatus {
-  $type: String;
-  id: number;
-  statusSeverity: number;
-  statusSeverityDescription: String;
-  reason: String;
-  created: String;
-  validityPeriods: ValidityPeriod[];
-  disruption: Disruption;
-}
-
-interface Disruption {
-  $type: String;
-  category: String;
-  categoryDescription: String;
-  description: String;
-  affectedRoutes: String[];
-  affectedStops: String[];
-  closureText: String;
-}
-
-interface ValidityPeriod {
-  $type: String;
-  fromDate: String;
-  toDate: String;
-  isNow: Boolean;
-}
-
-interface ServiceType {
-  $type: String;
-  name: String;
-  uri: String;
-}
-
-interface Crowding {
-  $type: String;
-}
