@@ -2,7 +2,7 @@ import React from "react";
 import Table from "./components/table";
 import { fetchLineData } from "./services/fetch-line-data/fetchLineData";
 import { Line } from "./models/line";
-import { Wrapper, LatePeopleContainer } from "./styling/TableStyles";
+import { Wrapper, HeaderContainer } from "./styling/TableStyles";
 import { ReactComponent as Train } from "./train.svg";
 
 const App = () => {
@@ -27,9 +27,9 @@ const App = () => {
 
   return (
     <Wrapper>
-      <LatePeopleContainer>
+      <HeaderContainer>
         <Train width={90} />
-      </LatePeopleContainer>
+      </HeaderContainer>
 
       <Table lineData={lineData} />
     </Wrapper>

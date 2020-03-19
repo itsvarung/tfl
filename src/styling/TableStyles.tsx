@@ -30,7 +30,7 @@ export const Container = styled.div`
   background: #ffffff;
 `;
 
-export const LatePeopleContainer = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
   flex-flow: column;
   overflow: hidden;

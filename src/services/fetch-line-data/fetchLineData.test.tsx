@@ -20,8 +20,6 @@ describe("Test fetching data from Backend", function() {
       expect(res as Line[]).toBeTruthy();
     });
   });
-
-  // Test what happens when backend call fails
 });
 
 export const trainLineData = [
