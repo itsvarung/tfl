@@ -29,12 +29,20 @@ export const Container = styled.div`
   min-width: 800px;
   background: #ffffff;
 `;
+
+export const LatePeopleContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  margin: 48px auto 0;
+  width: 80%;
+  min-width: 800px;
+  align-items: center;
+`;
+
 export const CardHeader = styled.header`
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 50px;
   padding-left: 50px;
-  // margin: 0px auto;
-  // position: relative;
   align: left;
 `;
 
