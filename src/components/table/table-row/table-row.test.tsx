@@ -28,24 +28,28 @@ describe("table row component", () => {
         .find({ "data-testid": "color" })
         .exists()
     ).toBe(true);
+
     expect(
       cells
         .at(1)
         .find({ children: "Bakerloo" })
         .exists()
     ).toBe(true);
+
     expect(
       cells
         .at(2)
         .find({ children: "Good Service" })
         .exists()
     ).toBe(true);
+
     expect(
       cells
         .at(3)
         .find({ children: 10 })
         .exists()
     ).toBe(true);
+
     expect(
       cells
         .at(4)
