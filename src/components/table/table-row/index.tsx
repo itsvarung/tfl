@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, RowData } from "../../../styling/TableStyles";
+import { Row, RowData, Circle } from "../../../styling/TableStyles";
 import { Line } from "../../../models/line";
 
 interface Props {
@@ -10,6 +10,9 @@ interface Props {
 const LineTableRow: React.FC<Props> = props => {
   return (
     <Row data-testid="line-row" key={props.index.toString()}>
+      <RowData align="right" data-testid="color">
+        <Circle lineId={props.line.id}> </Circle>
+      </RowData>
       <RowData align="right" data-testid="name">
         {props.line.name}
       </RowData>

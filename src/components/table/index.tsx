@@ -1,6 +1,12 @@
 import React from "react";
-import LineTableRow from "./tableRow";
-import { Table, Container, HeaderData } from "../../styling/TableStyles";
+import LineTableRow from "./table-row";
+import {
+  Table,
+  Container,
+  HeaderData,
+  CardHeaderText,
+  CardHeader
+} from "../../styling/TableStyles";
 import { Line } from "../../models/line";
 
 export interface Props {
@@ -10,9 +16,13 @@ export interface Props {
 const TrainLinesTable: React.FC<Props> = props => {
   return (
     <Container>
+      <CardHeader>
+        <CardHeaderText>Train Schedule</CardHeaderText>
+      </CardHeader>
       <Table data-testid="table">
         {/* Table Header */}
         <thead data-testid="table-head">
+          <HeaderData data-testid="table-head-line-cell"></HeaderData>
           <HeaderData data-testid="table-head-line-cell">Line</HeaderData>
           <HeaderData data-testid="table-head-status-cell">Status</HeaderData>
           <HeaderData data-testid="table-head-severity-cell">
