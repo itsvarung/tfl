@@ -22,15 +22,17 @@ const TrainLinesTable: React.FC<Props> = props => {
       <Table data-testid="table">
         {/* Table Header */}
         <thead data-testid="table-head">
-          <HeaderData data-testid="table-head-line-cell"></HeaderData>
-          <HeaderData data-testid="table-head-line-cell">Line</HeaderData>
-          <HeaderData data-testid="table-head-status-cell">Status</HeaderData>
-          <HeaderData data-testid="table-head-severity-cell">
-            Status Severity
-          </HeaderData>
-          <HeaderData data-testid="table-head-reason-cell">
-            Status Reason
-          </HeaderData>
+          <tr>
+            <HeaderData data-testid="table-head-line-color"></HeaderData>
+            <HeaderData data-testid="table-head-line-cell">Line</HeaderData>
+            <HeaderData data-testid="table-head-status-cell">Status</HeaderData>
+            <HeaderData data-testid="table-head-severity-cell">
+              Status Severity
+            </HeaderData>
+            <HeaderData data-testid="table-head-reason-cell">
+              Status Reason
+            </HeaderData>
+          </tr>
         </thead>
 
         {/* Table Body */}

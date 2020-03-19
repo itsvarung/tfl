@@ -1,15 +1,58 @@
 import React from "react";
-import { render, within } from "@testing-library/react";
 import Row from "./index";
 import { Line } from "../../../models/line";
 
-test("Row renders correctly", () => {
-  const { getByTestId } = render(<Row index={0} line={trainLineData} />);
-  const tableRow = getByTestId("line-row");
-  expect(within(tableRow).getByTestId("name")).toBeTruthy;
-  expect(within(tableRow).getByTestId("status-description")).toBeTruthy;
-  expect(within(tableRow).getByTestId("status-severity")).toBeTruthy;
-  expect(within(tableRow).getByTestId("status-reason")).toBeTruthy;
+import { configure, shallow, mount } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+configure({ adapter: new Adapter() });
+
+describe("table row component", () => {
+  test("renders", () => {
+    const wrapper = mount(<Row index={0} line={trainLineData} />);
+
+    // Rendering correctly
+    expect(wrapper.exists()).toBe(true);
+
+    // Renders only 1 row
+    let row = wrapper.find("tr");
+    expect(row).toHaveLength(1);
+
+    // Renders 5 cells
+    let cells = wrapper.find("td");
+    expect(cells).toHaveLength(5);
+
+    // Renders data within cells correctly
+    expect(
+      cells
+        .at(0)
+        .find({ "data-testid": "color" })
+        .exists()
+    ).toBe(true);
+    expect(
+      cells
+        .at(1)
+        .find({ children: "Bakerloo" })
+        .exists()
+    ).toBe(true);
+    expect(
+      cells
+        .at(2)
+        .find({ children: "Good Service" })
+        .exists()
+    ).toBe(true);
+    expect(
+      cells
+        .at(3)
+        .find({ children: 10 })
+        .exists()
+    ).toBe(true);
+    expect(
+      cells
+        .at(4)
+        .find({ children: "" })
+        .exists()
+    ).toBe(true);
+  });
 });
 
 const trainLineData: Line = {

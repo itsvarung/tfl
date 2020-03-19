@@ -3,11 +3,23 @@ import { render, within } from "@testing-library/react";
 import TrainLinesTable from "./index";
 import { Line } from "../../models/line";
 
+import { configure, shallow, mount } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+configure({ adapter: new Adapter() });
+
+test("Table renders correctly", () => {
+  const wrapper = mount(<TrainLinesTable lineData={trainLineData} />);
+
+  // Should be one table
+  const table = wrapper.find("table");
+  expect(table).toHaveLength(1);
+});
+
 test("Table renders the correct number of rows if 2 rows are given", () => {
   const { getByTestId } = render(<TrainLinesTable lineData={trainLineData} />);
   const tableBody = getByTestId("table-body");
   const tableRows = within(tableBody).getAllByTestId("line-row");
-  expect(tableRows.length).toBe(2);
+  expect(tableRows).toHaveLength(2);
 });
 
 test("Table renders the correct number of rows if 0 rows are given", () => {
@@ -16,13 +28,45 @@ test("Table renders the correct number of rows if 0 rows are given", () => {
 });
 
 test("Table headers render correctly", () => {
-  const { getByTestId } = render(<TrainLinesTable lineData={trainLineData} />);
-  const tableHeader = getByTestId("table-head");
-  expect(within(tableHeader).getByTestId("table-head-line-cell")).toBeTruthy;
-  expect(within(tableHeader).getByTestId("table-head-status-cell")).toBeTruthy;
-  expect(within(tableHeader).getByTestId("table-head-severity-cell"))
-    .toBeTruthy;
-  expect(within(tableHeader).getByTestId("table-head-reason-cell")).toBeTruthy;
+  const wrapper = mount(<TrainLinesTable lineData={trainLineData} />);
+
+  // Should be one table header
+  const tableHeader = wrapper.find("thead");
+  expect(tableHeader).toHaveLength(1);
+
+  // Expect 1 row
+  const row = tableHeader.find("tr");
+  expect(row).toHaveLength(1);
+
+  // Renders 5 cells
+  let cells = row.find("th");
+  expect(cells).toHaveLength(5);
+
+  // With the correct titles
+  expect(
+    cells
+      .at(1)
+      .find({ children: "Line" })
+      .exists()
+  ).toBe(true);
+  expect(
+    cells
+      .at(2)
+      .find({ children: "Status" })
+      .exists()
+  ).toBe(true);
+  expect(
+    cells
+      .at(3)
+      .find({ children: "Status Severity" })
+      .exists()
+  ).toBe(true);
+  expect(
+    cells
+      .at(4)
+      .find({ children: "Status Reason" })
+      .exists()
+  ).toBe(true);
 });
 
 const trainLineData: Line[] = [

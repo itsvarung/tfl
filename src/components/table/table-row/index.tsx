@@ -11,7 +11,7 @@ const LineTableRow: React.FC<Props> = props => {
   return (
     <Row data-testid="line-row" key={props.index.toString()}>
       <RowData align="right" data-testid="color">
-        <Circle lineId={props.line.id}> </Circle>
+        <Circle lineId={props.line.id} />
       </RowData>
       <RowData align="right" data-testid="name">
         {props.line.name}
