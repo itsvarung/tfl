@@ -6,19 +6,17 @@ export const Wrapper = styled.div`
   bottom: 50px;
 `;
 
-interface CircleProps {
-  lineId: String;
-}
-
-export const Circle = styled.span<CircleProps>`
-  height: 20px;
-  width: 20px;
-  background-color: ${props => choseBackgroundColor(props.lineId)};
-  border-radius: 50%;
-  display: inline-block;
+export const HeaderContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  margin: 48px auto 0;
+  width: 80%;
+  min-width: 800px;
+  align-items: center;
 `;
 
-export const Container = styled.div`
+export const Card = styled.div`
   display: flex;
   flex-flow: column;
   overflow: hidden;
@@ -28,16 +26,6 @@ export const Container = styled.div`
   width: 80%;
   min-width: 800px;
   background: #ffffff;
-`;
-
-export const HeaderContainer = styled.div`
-  display: flex;
-  flex-flow: column;
-  overflow: hidden;
-  margin: 48px auto 0;
-  width: 80%;
-  min-width: 800px;
-  align-items: center;
 `;
 
 export const CardHeader = styled.header`
@@ -76,6 +64,18 @@ export const RowData = styled.td`
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #ededed;
+`;
+
+interface CircleProps {
+  lineId: String;
+}
+
+export const Circle = styled.span<CircleProps>`
+  height: 20px;
+  width: 20px;
+  background-color: ${props => choseBackgroundColor(props.lineId)};
+  border-radius: 50%;
+  display: inline-block;
 `;
 
 export function choseBackgroundColor(lineId: String) {

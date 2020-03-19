@@ -2,7 +2,7 @@ import React from "react";
 import LineTableRow from "./table-row";
 import {
   Table,
-  Container,
+  Card,
   HeaderData,
   CardHeaderText,
   CardHeader
@@ -15,7 +15,7 @@ export interface Props {
 
 const TrainLinesTable: React.FC<Props> = props => {
   return (
-    <Container>
+    <Card>
       <CardHeader>
         <CardHeaderText>Train Schedule</CardHeaderText>
       </CardHeader>
@@ -40,7 +40,7 @@ const TrainLinesTable: React.FC<Props> = props => {
           ))}
         </tbody>
       </Table>
-    </Container>
+    </Card>
   );
 };
 
