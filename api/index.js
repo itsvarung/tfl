@@ -13,6 +13,9 @@ app.get("/", async (req, res) => {
     const data = await fetchLineData();
     res.json(data);
   } catch (e) {
+
+    //Send 400 and the correct error message back to the front end
+    res.status(400).send(e.message);
     console.error(e);
   }
 });

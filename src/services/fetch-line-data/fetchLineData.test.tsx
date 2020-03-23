@@ -1,19 +1,27 @@
 import { enableFetchMocks } from "jest-fetch-mock";
 enableFetchMocks();
 require("jest-fetch-mock").enableMocks();
-import React from "react";
-import ReactDOM from "react-dom";
-import { render, within, act } from "@testing-library/react";
-import App from "./App";
-import { Line } from "./models/line";
 
-it("Renders", async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(trainLineData));
-  const div = document.createElement("div");
-  await act(async () => {
-    ReactDOM.render(<App />, div);
+import { fetchLineData } from "./fetchLineData";
+import { Line } from "../../models/line";
+
+describe("testing backend", () => {
+  beforeEach(() => {
+    fetchMock.doMock();
+    fetchMock.resetMocks();
   });
-  ReactDOM.unmountComponentAtNode(div);
+
+  it("if data sent from backend, process data correctly", async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(trainLineData));
+    const returnedData = await fetchLineData();
+    expect(returnedData as Line[]).toHaveLength(2);
+  });
+
+  it("if no data returned, return empty array", async () => {
+    fetchMock.mockReject(new Error("There was no data returned by the API"));
+    const returnedData = await fetchLineData();
+    expect(returnedData as Line[]).toHaveLength(0);
+  });
 });
 
 const trainLineData = [
