@@ -1,9 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://prod.liveshare.vsengsaas.visualstudio.com/join?B8F8291A9FF191D64DE93F375F24AB52D34D
 
 ## Available Scripts
 
 In the project directory, you can run:
-### Back end: `node index.js` 
+### Back end: `node api/index.js` 
 
 Run the above command while inside the api folder
 
